@@ -18,9 +18,9 @@ export class TimerService {
     
     constructor(){}
 
-        destroy():void{
-            this.clearTimeout();
-        }
+      destroy():void{
+          this.clearTimeout();
+      }
     
       restartCountdown(init?){
           if(init){ 
