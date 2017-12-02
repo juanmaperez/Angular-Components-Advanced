@@ -1,7 +1,12 @@
 <div class="timer">
-  <app-progress-bar [progress]="(init-countdown)/init*100"></app-progress-bar>
+  <app-progress-bar [progress]="(init-timer.countdown$ | async)/init*100"></app-progress-bar>
 
-  <app-display [time]="countdown"></app-display>
+  <app-display [time]="timer.countdown$ | async"></app-display>
 
-  <button (click)="startCountdown()">RESTART</button>
+  <div class="buttons">
+    <button (click)="timer.restartCountdown()">RESTART</button>
+    <button *ngIf="timer.paused" (click)="timer.toogleCountdown()">Play</button>
+    <button *ngIf="!timer.paused" (click)="timer.toogleCountdown()">Pause</button>
+    
+  </div>
 </div>
